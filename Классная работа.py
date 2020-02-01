@@ -3,8 +3,7 @@ import datetime
 import prettytable                  # пакет для таблицы
 import matplotlib.pyplot as plt     # библиотека для графика
 
-#Функция сортировки вставками insert:
-def myFunc(A):
+def myFunc(A):                      #Функция сортировки вставками insert:
     for i in range(len(A)):
         t = A[i]
         j = i
