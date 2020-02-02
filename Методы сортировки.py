@@ -1,12 +1,12 @@
-#Мной были сделаны функции сортировки вставками insert и выбором select
+#РњРЅРѕР№ Р±С‹Р»Рё СЃРґРµР»Р°РЅС‹ С„СѓРЅРєС†РёРё СЃРѕСЂС‚РёСЂРѕРІРєРё РІСЃС‚Р°РІРєР°РјРё insert Рё РІС‹Р±РѕСЂРѕРј select
 
 import random
 import datetime
-import prettytable  # пакет для таблицы
-import matplotlib.pyplot as plt  # библиотека для графика
+import prettytable  # РїР°РєРµС‚ РґР»СЏ С‚Р°Р±Р»РёС†С‹
+import matplotlib.pyplot as plt  # Р±РёР±Р»РёРѕС‚РµРєР° РґР»СЏ РіСЂР°С„РёРєР°
 
 
-def myFuncInsert(A):  # Функция сортировки вставками insert:
+def myFuncInsert(A):  # Р¤СѓРЅРєС†РёСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РІСЃС‚Р°РІРєР°РјРё insert:
     for i in range(len(A)):
         t = A[i]
         j = i
@@ -18,7 +18,7 @@ def myFuncInsert(A):  # Функция сортировки вставками insert:
         A[j] = t
 
 
-def myFuncSelect(A):  # Функция сортировки выбором select:
+def myFuncSelect(A):  # Р¤СѓРЅРєС†РёСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РІС‹Р±РѕСЂРѕРј select:
     for i in range(0, len(A)):
         m = i
         for j in range(i, len(A)):
@@ -29,7 +29,7 @@ def myFuncSelect(A):  # Функция сортировки выбором select:
                 A[i] = x
 
 
-def BubbleSort(A):  # сортировка пузырьком
+def BubbleSort(A):  # СЃРѕСЂС‚РёСЂРѕРІРєР° РїСѓР·С‹СЂСЊРєРѕРј
     for i in range(len(A)):
         for j in range(len(A) - 1 - i):
             if A[j] > A[j + 1]:
@@ -38,7 +38,7 @@ def BubbleSort(A):  # сортировка пузырьком
                 A[j + 1] = a
 
 
-def QuickSort(A, fst, lst):  # быстрая сортировка
+def QuickSort(A, fst, lst):  # Р±С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°
     if fst >= lst:
         return
 
@@ -64,7 +64,7 @@ def QuickSort(A, fst, lst):  # быстрая сортировка
 
 
 table = prettytable.PrettyTable(
-    ["Размер списка", "Время пузырька", "Время быстрой", "Время вставками", "Время выбором"])
+    ["Р Р°Р·РјРµСЂ СЃРїРёСЃРєР°", "Р’СЂРµРјСЏ РїСѓР·С‹СЂСЊРєР°", "Р’СЂРµРјСЏ Р±С‹СЃС‚СЂРѕР№", "Р’СЂРµРјСЏ РІСЃС‚Р°РІРєР°РјРё", "Р’СЂРµРјСЏ РІС‹Р±РѕСЂРѕРј"])
 x = []
 y1 = []
 y2 = []
@@ -98,25 +98,25 @@ for N in range(1000, 5001, 1000):
     BubbleSort(A)
     t2 = datetime.datetime.now()
     y1.append((t2 - t1).total_seconds())
-    print("Пузырьковая сортировка   " + str(N) + "   заняла   " + str((t2 - t1).total_seconds()) + "c")
+    print("РџСѓР·С‹СЂСЊРєРѕРІР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°   " + str(N) + "   Р·Р°РЅСЏР»Р°   " + str((t2 - t1).total_seconds()) + "c")
 
     t3 = datetime.datetime.now()
     QuickSort(B, 0, len(B) - 1)
     t4 = datetime.datetime.now()
     y2.append((t4 - t3).total_seconds())
-    print("Быстрая   " + str(N) + "   заняла   " + str((t4 - t3).total_seconds()) + "c")
+    print("Р‘С‹СЃС‚СЂР°СЏ   " + str(N) + "   Р·Р°РЅСЏР»Р°   " + str((t4 - t3).total_seconds()) + "c")
 
     t5 = datetime.datetime.now()
     myFuncInsert(D)
     t6 = datetime.datetime.now()
     y3.append((t6 - t5).total_seconds())
-    print("Сортировка вставками   " + str(N) + "   заняла   " + str((t6 - t5).total_seconds()) + "c")
+    print("РЎРѕСЂС‚РёСЂРѕРІРєР° РІСЃС‚Р°РІРєР°РјРё   " + str(N) + "   Р·Р°РЅСЏР»Р°   " + str((t6 - t5).total_seconds()) + "c")
 
     t7 = datetime.datetime.now()
     myFuncInsert(E)
     t8 = datetime.datetime.now()
     y4.append((t8 - t7).total_seconds())
-    print("Сортировка выбором   " + str(N) + "   заняла   " + str((t8 - t7).total_seconds()) + "c")
+    print("РЎРѕСЂС‚РёСЂРѕРІРєР° РІС‹Р±РѕСЂРѕРј   " + str(N) + "   Р·Р°РЅСЏР»Р°   " + str((t8 - t7).total_seconds()) + "c")
 
     table.add_row(
         [str(N), str((t2 - t1).total_seconds()), str((t4 - t3).total_seconds()), str((t6 - t5).total_seconds()),
